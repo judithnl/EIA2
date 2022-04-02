@@ -1,0 +1,24 @@
+.div0{
+    border-color:blueviolet;
+    border-style: double;
+    width: 300px;
+    height: 400px;
+
+}
+
+.div1{
+    border-color:blueviolet;
+    border-style: double;
+    width: 300px;
+    height: 400px;
+    margin-left: 350px;   
+    margin-top: -400px;
+}
+
+.littleField{
+  position: fixed;
+  border-color: crimson;
+  border-style: ridge;
+  width: 150px;
+  height: 80px;
+}
