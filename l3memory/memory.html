@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./memorystyle.css">
+    <script src="./memoryscript.js"></script>
+</head>
+<body>
+    <h1>Memory</h1>
+    <div id="wrapper">
+        <form id="settings">
+            <fieldset>
+                Anzahl Paare:
+                <input type="number" name ="pairs" step="1" min="5" max="25" value="10">
+                <label for="pairs"></label>
+            </fieldset>
+            <fieldset>
+                Kartengröße:
+                30px
+                <input type="range" name="cardsize" min="30" max="150" step="5" >
+                150px
+            </fieldset>
+            <fieldset>
+               
+                Hintergrundfarbe:
+                <input type="color" name="background"  value="#000000">
+                <hr />
+                Kartenfarbe:
+                <input type="color" name="card"  value="#000000">
+                <hr />
+                Schriftfarbe:
+                <input type="color" name="font"  value="#000000">
+            </fieldset>
+            <fieldset>
+                Schriftart
+                <input type="radio" name="fonts"/>
+                <label for="lucida" id="lucida">Lucida Sans</label>
+                <input type="radio" name="fonts"/>
+                <label for="arial" id="arial">Arial</label>
+                <input type="radio" name="fonts"/>
+                <label for="cambria" id="cambria">Cambria</label>
+            </fieldset>
+            <input type="submit"  id="button" value="Start">
+        </form>
+        
+
+    </div>
+</body>
+</html>

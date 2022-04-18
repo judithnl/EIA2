@@ -1,0 +1,78 @@
+body {
+    font-family: "Bahnschrift";
+}
+h1 {
+    text-align: center;
+    font-size: 70px;
+    color: darkviolet;
+}
+
+fieldset {
+    text-align: center;
+    margin-top: 7px;
+
+}
+#settings {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(174, 202, 245);
+    color: rgb(115, 54, 139);
+}
+
+#wrapper {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#button {
+    background-color: rgb(110, 57, 103);
+    width: 20%;
+    height: 50px;
+    color: rgb(67, 216, 99);
+   
+}
+
+.card {
+    float: left;
+    text-align: center;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-style: double;
+    border-color: lawngreen;
+}
+
+
+.hidden {
+    visibility: hidden;
+}
+
+.displayvalue {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 2;
+}
+
+.timer {
+    position: absolute;
+    float: left;
+    margin-left: -700px;
+    margin-top: -150px;
+    font-size: 30px;
+    color: rgb(235, 0, 137);
+
+}
+#lucida {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    ;
+   
+}
+#cambria {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   
+}
+#arial {
+    font-family: Arial, Helvetica, sans-serif;
+}
