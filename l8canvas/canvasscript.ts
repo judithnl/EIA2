@@ -4,7 +4,7 @@ namespace l8 {
     function draw() {
     let canvas: HTMLCanvasElement = document.querySelector("canvas");
     canvas.width = 1400;
-    canvas.height = 550;
+    canvas.height = 650;
     let create: CanvasRenderingContext2D = canvas.getContext("2d");
 
     create.fillStyle = "violet";
