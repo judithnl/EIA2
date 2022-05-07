@@ -4,7 +4,7 @@ var l8;
     function draw() {
         var canvas = document.querySelector("canvas");
         canvas.width = 1400;
-        canvas.height = 700;
+        canvas.height = 550;
         var create = canvas.getContext("2d");
         create.fillStyle = "violet";
         create.scale(5, 5);
