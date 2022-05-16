@@ -12,10 +12,8 @@ var strand;
         drawSun();
         drawCloud(50, 160, "#FFFFFF");
         drawCloud(260, 100, "#f0eeea");
-        drawCloud(700, 120, "#FFFFFF");
-        drawCloud(1100, 60, "#f0eeea");
         drawPerson();
-        drawBirds();
+        drawBird();
         drawShip();
         //Wasser
         function drawWater(_x, _y) {
@@ -97,7 +95,7 @@ var strand;
             crc2.fill();
         }
         //Möwen
-        function drawBirds() {
+        function drawBird() {
             crc2.beginPath();
             crc2.moveTo(50, 100);
             crc2.bezierCurveTo(50, 50, 100, 50, 100, 100);

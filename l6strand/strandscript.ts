@@ -17,11 +17,10 @@ namespace strand {
 
         drawCloud(50, 160, "#FFFFFF");
         drawCloud(260, 100, "#f0eeea");
-        drawCloud(700, 120, "#FFFFFF");
-        drawCloud(1100, 60, "#f0eeea");
+    
 
         drawPerson();
-        drawBirds();
+        drawBird();
         drawShip();
        
 
@@ -140,7 +139,7 @@ namespace strand {
 
 
         //Möwen
-        function drawBirds(): void {
+        function drawBird(): void {
 
             crc2.beginPath();
             crc2.moveTo(50, 100);
