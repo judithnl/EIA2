@@ -4,33 +4,23 @@ namespace strand {
     let canvas: HTMLCanvasElement;
 
     function handleLoad(_event: Event): void {
-
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d")!;
-
-
+        //call functions
         drawSky(0, 0, "#88d1CF");
-        
         drawWater(0, 0);
         drawSand(0, 110);
         drawSun();
-
         drawCloud(50, 160, "#FFFFFF");
         drawCloud(260, 100, "#f0eeea");
-    
-
         drawPerson();
         drawBird();
         drawShip();
-       
 
-
-        //Wasser
+        //water
         function drawWater(_x: number, _y: number): void {
-
             var gradient: CanvasGradient = crc2.createLinearGradient(0, 0, 0, 700);
             gradient.addColorStop(0.5, "#197580");
-
 
             crc2.beginPath();
             crc2.strokeStyle = gradient;
@@ -46,8 +36,7 @@ namespace strand {
             crc2.fill();
         }
 
-
-        //Sand
+        //sand
         function drawSand(_x: number, _y: number): void {
 
             var gradient: CanvasGradient = crc2.createLinearGradient(0, 0, 0, 700);
@@ -63,13 +52,11 @@ namespace strand {
             crc2.fill();
         }
 
-
-        //Himmel
+        //sky
         function drawSky(_x: number, _y: number, _strokeColor: string): void {
 
             var gradient: CanvasGradient = crc2.createLinearGradient(0, 300, 0, 10);
             gradient.addColorStop(0, "#2D2B76");
-         
 
             crc2.beginPath();
             crc2.strokeStyle = _strokeColor;
@@ -85,11 +72,7 @@ namespace strand {
             crc2.fill();
         }
 
-    
-
         //Sonne
-
-
         function drawSun(): void {
             //sun gradient
             // let sun: CanvasGradient = crc2.createRadialGradient()
@@ -98,13 +81,11 @@ namespace strand {
             crc2.fill();
         }
 
-
-        //Wolke
+        //clouds
         function drawCloud(_x: number, _y: number, _fillColor: string): void {
 
             crc2.beginPath();
             crc2.fillStyle = _fillColor;
-
             crc2.arc(_x + 20, _y + 30, 20, 0, 2 * Math.PI);
             crc2.arc(_x + 50, _y + 25, 40, 0, 2 * Math.PI);
             crc2.arc(_x + 90, _y + 20, 35, 0, 2 * Math.PI);
@@ -112,7 +93,6 @@ namespace strand {
             crc2.closePath();
             crc2.fill();
         }
-
 
         //menschen
         function drawPerson(): void {
@@ -134,29 +114,23 @@ namespace strand {
             crc2.fillStyle = "#000000";
             crc2.arc(495, 605, 6, 0, 2 * Math.PI);
             crc2.fill();
-
         }
 
-
-        //Möwen
+        //birds
         function drawBird(): void {
-
             crc2.beginPath();
             crc2.moveTo(50, 100);
             crc2.bezierCurveTo(50, 50, 100, 50, 100, 100);
             crc2.moveTo(100, 100);
             crc2.bezierCurveTo(100, 50, 150, 50, 150, 100);
 
-            
             crc2.lineWidth = 5;
             crc2.strokeStyle = "#000000";
-            crc2.stroke(); 
-            
+            crc2.stroke();  
         }
         
-        //Schiff
+        //ship
         function drawShip(): void {
-            
             crc2.beginPath();
             crc2.fillStyle = "#000000";
             crc2.fillRect(435, 325, 5, 50);
@@ -167,7 +141,6 @@ namespace strand {
             crc2.lineTo(465, 337.5); 
             crc2.fillStyle = "#000000";
             crc2.fill();
-
            
             crc2.beginPath();
             crc2.strokeStyle = "#000000";

@@ -6,6 +6,7 @@ var strand;
     function handleLoad(_event) {
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
+        //call functions
         drawSky(0, 0, "#88d1CF");
         drawWater(0, 0);
         drawSand(0, 110);
@@ -15,7 +16,7 @@ var strand;
         drawPerson();
         drawBird();
         drawShip();
-        //Wasser
+        //water
         function drawWater(_x, _y) {
             var gradient = crc2.createLinearGradient(0, 0, 0, 700);
             gradient.addColorStop(0.5, "#197580");
@@ -30,7 +31,7 @@ var strand;
             crc2.stroke();
             crc2.fill();
         }
-        //Sand
+        //sand
         function drawSand(_x, _y) {
             var gradient = crc2.createLinearGradient(0, 0, 0, 700);
             crc2.beginPath();
@@ -42,7 +43,7 @@ var strand;
             crc2.stroke();
             crc2.fill();
         }
-        //Himmel
+        //sky
         function drawSky(_x, _y, _strokeColor) {
             var gradient = crc2.createLinearGradient(0, 300, 0, 10);
             gradient.addColorStop(0, "#2D2B76");
@@ -65,7 +66,7 @@ var strand;
             crc2.arc(600, 150, 100, 150, Math.PI, true);
             crc2.fill();
         }
-        //Wolke
+        //clouds
         function drawCloud(_x, _y, _fillColor) {
             crc2.beginPath();
             crc2.fillStyle = _fillColor;
@@ -94,7 +95,7 @@ var strand;
             crc2.arc(495, 605, 6, 0, 2 * Math.PI);
             crc2.fill();
         }
-        //Möwen
+        //birds
         function drawBird() {
             crc2.beginPath();
             crc2.moveTo(50, 100);
@@ -105,7 +106,7 @@ var strand;
             crc2.strokeStyle = "#000000";
             crc2.stroke();
         }
-        //Schiff
+        //ship
         function drawShip() {
             crc2.beginPath();
             crc2.fillStyle = "#000000";
