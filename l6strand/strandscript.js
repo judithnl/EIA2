@@ -68,7 +68,7 @@ var strand;
         //cloud
         function drawCloud(_x, _y, _fillColor) {
             crc2.beginPath();
-            crc2.fillStyle = _fillColor;
+            crc2.fillStyle = "#e90fc4";
             crc2.arc(_x + 20, _y + 30, 20, 0, 2 * Math.PI);
             crc2.arc(_x + 50, _y + 25, 40, 0, 2 * Math.PI);
             crc2.arc(_x + 90, _y + 20, 35, 0, 2 * Math.PI);
