@@ -13,7 +13,7 @@ var strand;
         drawSun();
         drawCloud(50, 160, "#FFFFFF");
         drawCloud(260, 100, "#f0eeea");
-        drawPerson();
+        drawPersons();
         drawBird();
         drawShip();
         //sky
@@ -49,6 +49,7 @@ var strand;
         //sand
         function drawSand(_x, _y) {
             var gradient = crc2.createLinearGradient(0, 0, 0, 700);
+            gradient.addColorStop(0.5, "#197580");
             crc2.beginPath();
             crc2.moveTo(_x, _y + 400);
             crc2.lineTo(_x + 1280, _y + 400);
@@ -60,8 +61,6 @@ var strand;
         }
         //sun
         function drawSun() {
-            //sun gradient
-            // let sun: CanvasGradient = crc2.createRadialGradient()
             crc2.fillStyle = "#f8aa02";
             crc2.arc(600, 150, 100, 150, Math.PI, true);
             crc2.fill();
@@ -77,7 +76,7 @@ var strand;
             crc2.fill();
         }
         //people
-        function drawPerson() {
+        function drawPersons() {
             crc2.beginPath();
             crc2.fillStyle = "#000000";
             crc2.fillRect(510, 610, 10, 25);

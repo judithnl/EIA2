@@ -13,7 +13,7 @@ namespace strand {
         drawSun();
         drawCloud(50, 160, "#FFFFFF");
         drawCloud(260, 100, "#f0eeea");
-        drawPerson();
+        drawPersons();
         drawBird();
         drawShip();
 
@@ -58,7 +58,8 @@ namespace strand {
         //sand
         function drawSand(_x: number, _y: number): void {
 
-            var gradient: CanvasGradient = crc2.createLinearGradient(0, 0, 0, 700);
+        var gradient: CanvasGradient = crc2.createLinearGradient(0, 0, 0, 700);
+        gradient.addColorStop(0.5, "#197580");
             crc2.beginPath();
            
             crc2.moveTo(_x, _y + 400);
@@ -75,8 +76,7 @@ namespace strand {
 
         //sun
         function drawSun(): void {
-            //sun gradient
-            // let sun: CanvasGradient = crc2.createRadialGradient()
+
             crc2.fillStyle = "#f8aa02"
             crc2.arc(600, 150, 100, 150, Math.PI, true);
             crc2.fill();
@@ -96,7 +96,7 @@ namespace strand {
         }
 
         //people
-        function drawPerson(): void {
+        function drawPersons(): void {
 
             crc2.beginPath();
             crc2.fillStyle = "#000000";
