@@ -17,6 +17,7 @@ namespace strand {
         drawBird();
         drawShip();
 
+
         //sky
         function drawSky(_x: number, _y: number, _strokeColor: string): void {
 
@@ -59,7 +60,7 @@ namespace strand {
         function drawSand(_x: number, _y: number): void {
 
         var gradient: CanvasGradient = crc2.createLinearGradient(0, 0, 0, 700);
-        gradient.addColorStop(0.5, "#197580");
+        gradient.addColorStop(0.5, "#CC99FF");
             crc2.beginPath();
            
             crc2.moveTo(_x, _y + 400);

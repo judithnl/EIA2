@@ -49,7 +49,7 @@ var strand;
         //sand
         function drawSand(_x, _y) {
             var gradient = crc2.createLinearGradient(0, 0, 0, 700);
-            gradient.addColorStop(0.5, "#197580");
+            gradient.addColorStop(0.5, "#CC99FF");
             crc2.beginPath();
             crc2.moveTo(_x, _y + 400);
             crc2.lineTo(_x + 1280, _y + 400);
