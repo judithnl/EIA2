@@ -117,7 +117,7 @@ namespace strand {
             crc2.fill();
         }
 
-        //birds
+        //bird
         function drawBird(): void {
             crc2.beginPath();
             crc2.moveTo(50, 100);

@@ -94,7 +94,7 @@ var strand;
             crc2.arc(495, 605, 6, 0, 2 * Math.PI);
             crc2.fill();
         }
-        //birds
+        //bird
         function drawBird() {
             crc2.beginPath();
             crc2.moveTo(50, 100);
