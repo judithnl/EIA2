@@ -16,6 +16,21 @@ var strand;
         drawPerson();
         drawBird();
         drawShip();
+        //sky
+        function drawSky(_x, _y, _strokeColor) {
+            var gradient = crc2.createLinearGradient(0, 300, 0, 10);
+            gradient.addColorStop(0, "#2D2B76");
+            crc2.beginPath();
+            crc2.strokeStyle = _strokeColor;
+            crc2.fillStyle = gradient;
+            crc2.moveTo(_x, _y);
+            crc2.lineTo(_x + 1280, _y);
+            crc2.lineTo(_x + 1280, _y + 400);
+            crc2.lineTo(_x - 1280, _y + 400);
+            crc2.closePath();
+            crc2.stroke();
+            crc2.fill();
+        }
         //water
         function drawWater(_x, _y) {
             var gradient = crc2.createLinearGradient(0, 0, 0, 700);
@@ -43,22 +58,7 @@ var strand;
             crc2.stroke();
             crc2.fill();
         }
-        //sky
-        function drawSky(_x, _y, _strokeColor) {
-            var gradient = crc2.createLinearGradient(0, 300, 0, 10);
-            gradient.addColorStop(0, "#2D2B76");
-            crc2.beginPath();
-            crc2.strokeStyle = _strokeColor;
-            crc2.fillStyle = gradient;
-            crc2.moveTo(_x, _y);
-            crc2.lineTo(_x + 1280, _y);
-            crc2.lineTo(_x + 1280, _y + 400);
-            crc2.lineTo(_x - 1280, _y + 400);
-            crc2.closePath();
-            crc2.stroke();
-            crc2.fill();
-        }
-        //Sonne
+        //sun
         function drawSun() {
             //sun gradient
             // let sun: CanvasGradient = crc2.createRadialGradient()
@@ -66,7 +66,7 @@ var strand;
             crc2.arc(600, 150, 100, 150, Math.PI, true);
             crc2.fill();
         }
-        //clouds
+        //cloud
         function drawCloud(_x, _y, _fillColor) {
             crc2.beginPath();
             crc2.fillStyle = _fillColor;
@@ -76,7 +76,7 @@ var strand;
             crc2.closePath();
             crc2.fill();
         }
-        //menschen
+        //people
         function drawPerson() {
             crc2.beginPath();
             crc2.fillStyle = "#000000";

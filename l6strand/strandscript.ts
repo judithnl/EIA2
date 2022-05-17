@@ -17,6 +17,25 @@ namespace strand {
         drawBird();
         drawShip();
 
+        //sky
+        function drawSky(_x: number, _y: number, _strokeColor: string): void {
+
+            var gradient: CanvasGradient = crc2.createLinearGradient(0, 300, 0, 10);
+            gradient.addColorStop(0, "#2D2B76");
+
+            crc2.beginPath();
+            crc2.strokeStyle = _strokeColor;
+            crc2.fillStyle = gradient;
+
+            crc2.moveTo(_x, _y);
+            crc2.lineTo(_x + 1280, _y);
+            crc2.lineTo(_x + 1280, _y + 400);
+            crc2.lineTo(_x - 1280, _y + 400);
+
+            crc2.closePath();
+            crc2.stroke();
+            crc2.fill();
+        }
         //water
         function drawWater(_x: number, _y: number): void {
             var gradient: CanvasGradient = crc2.createLinearGradient(0, 0, 0, 700);
@@ -52,27 +71,9 @@ namespace strand {
             crc2.fill();
         }
 
-        //sky
-        function drawSky(_x: number, _y: number, _strokeColor: string): void {
 
-            var gradient: CanvasGradient = crc2.createLinearGradient(0, 300, 0, 10);
-            gradient.addColorStop(0, "#2D2B76");
 
-            crc2.beginPath();
-            crc2.strokeStyle = _strokeColor;
-            crc2.fillStyle = gradient;
-
-            crc2.moveTo(_x, _y);
-            crc2.lineTo(_x + 1280, _y);
-            crc2.lineTo(_x + 1280, _y + 400);
-            crc2.lineTo(_x - 1280, _y + 400);
-
-            crc2.closePath();
-            crc2.stroke();
-            crc2.fill();
-        }
-
-        //Sonne
+        //sun
         function drawSun(): void {
             //sun gradient
             // let sun: CanvasGradient = crc2.createRadialGradient()
@@ -81,7 +82,7 @@ namespace strand {
             crc2.fill();
         }
 
-        //clouds
+        //cloud
         function drawCloud(_x: number, _y: number, _fillColor: string): void {
 
             crc2.beginPath();
@@ -94,7 +95,7 @@ namespace strand {
             crc2.fill();
         }
 
-        //menschen
+        //people
         function drawPerson(): void {
 
             crc2.beginPath();
