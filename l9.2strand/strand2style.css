@@ -1,0 +1,16 @@
+h1 {
+    color: #ffb300;
+    font-family:fantasy;
+    font-size: 50px;
+    width: 100%;
+}
+
+#canvas {
+    width: 100%;
+}
+
+body{
+margin: 50px;
+padding-left: 25px;
+padding-right: 25px;
+}
