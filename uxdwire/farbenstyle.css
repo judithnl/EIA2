@@ -74,25 +74,6 @@ position: absolute;
    
    
 }
-.text4{
-    width: 625px;
-    height: 65px;
-    padding: 0px;
-    border-color: rgb(253, 251, 251);
-    border-style:groove;
-    text-align: left;
-    padding-left: 10px;
-    padding-top: 4px;
-    font-size: 18px;
-    border-radius: 2px;
-    color: rgb(245, 245, 245);
-position: absolute;
-    background-color: black;
-    margin-left: -645px;
-    margin-top: 297px;
-   
-   
-}
 
 #next{
 margin: 0px;
@@ -177,8 +158,14 @@ position: absolute;
 }
 
 #home{
-
+border-style: hidden;
 position: absolute;
+width: 55px;
+border-radius: 5px;
+
+background-color: white;
+margin-top: -390px;
+margin-left: -220px;
 }
 
 .startseite{
