@@ -193,20 +193,12 @@ position: absolute;
 
         
     #next4{
-        margin: 0px;
-        background-color: rgb(255, 255, 255);
-        color: rgb(255, 255, 255);
-        border-color: rgb(150, 150, 150);
-        border-radius: 17px;
-        border-style: outset;
-        height: 40px;
-        width: 120px;
-        font-size: 28px;
-        background-image:linear-gradient(90deg,rgb(10, 10, 10),rgb(86, 84, 84),rgb(78, 75, 75),rgb(3, 3, 3));
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-weight: bold;
-        text-shadow: rgb(0, 0, 0);
-        margin-left: -130px;
+        border-style: hidden;
+        position: absolute;
+        
+        border-radius: 5px;
+        background-color: white;
+        margin-left: -80px;
         margin-top: 250px;
         position: absolute;
         }
@@ -214,7 +206,7 @@ position: absolute;
 #back{
     border-style: hidden;
     position: absolute;
-    width: 60px;
+    
     border-radius: 5px;
     background-color: white;
     margin-top: 250px;
