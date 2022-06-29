@@ -212,8 +212,14 @@ position: absolute;
         }
 
 .back{
-
-position: absolute;
+    border-style: hidden;
+    position: absolute;
+    width: 55px;
+    border-radius: 5px;
+    
+    background-color: white;
+    margin-top: 0px;
+    margin-left: 0px;
 }
 
 #home{
