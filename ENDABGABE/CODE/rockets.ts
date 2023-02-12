@@ -1,10 +1,9 @@
 namespace fireworks {
     
-    export class RocketWithPhysics {
-        
+    export class Rocketsss{
         public position: Vector;
         public velocity: Vector;
-        public rotationValue: number; // Which way the rocket is heading
+        public rotationValue: number;
         public yGravity: number;
         public lifetime: number;
         public lifetimeMax: number;
@@ -37,15 +36,13 @@ namespace fireworks {
             this.radius = _radius;
         }
 
-        public copyPosition(_target: RocketWithPhysics): void {
+        public Position(_target: Rocketsss): void {
             this.position = new Vector(_target.position.x, _target.position.y);
-
             this.velocity = new Vector(_target.velocity.x, _target.velocity.y);
         }
 
-        public calculateNewValue(timeElapsed: number, canvasWidth: number, canvasHeight: number): void {
-         
-            this.velocity.y = this.velocity.y + (this.yGravity * timeElapsed / 1000); // gravity dampens the y velocity over time
+        public newValue(timeElapsed: number, canvasWidth: number, canvasHeight: number): void {
+            this.velocity.y = this.velocity.y + (this.yGravity * timeElapsed / 1000); 
             this.position.x = Math.min(Math.max(this.position.x + this.velocity.x, 0), canvasWidth);
             this.position.y = Math.min(Math.max(this.position.y + this.velocity.y, 0), canvasHeight);
 

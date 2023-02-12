@@ -1,10 +1,10 @@
 "use strict";
 var fireworks;
 (function (fireworks) {
-    class RocketWithPhysics {
+    class Rocketsss {
         position;
         velocity;
-        rotationValue; // Which way the rocket is heading
+        rotationValue;
         yGravity;
         lifetime;
         lifetimeMax;
@@ -35,12 +35,12 @@ var fireworks;
             this.hierarchyMax = _hierarchyMax;
             this.radius = _radius;
         }
-        copyPosition(_target) {
+        Position(_target) {
             this.position = new fireworks.Vector(_target.position.x, _target.position.y);
             this.velocity = new fireworks.Vector(_target.velocity.x, _target.velocity.y);
         }
-        calculateNewValue(timeElapsed, canvasWidth, canvasHeight) {
-            this.velocity.y = this.velocity.y + (this.yGravity * timeElapsed / 1000); // gravity dampens the y velocity over time
+        newValue(timeElapsed, canvasWidth, canvasHeight) {
+            this.velocity.y = this.velocity.y + (this.yGravity * timeElapsed / 1000);
             this.position.x = Math.min(Math.max(this.position.x + this.velocity.x, 0), canvasWidth);
             this.position.y = Math.min(Math.max(this.position.y + this.velocity.y, 0), canvasHeight);
             if (this.lifetime < 0) {
@@ -51,6 +51,6 @@ var fireworks;
             }
         }
     }
-    fireworks.RocketWithPhysics = RocketWithPhysics;
+    fireworks.Rocketsss = Rocketsss;
 })(fireworks || (fireworks = {}));
 //# sourceMappingURL=rockets.js.map

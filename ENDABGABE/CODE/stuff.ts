@@ -1,5 +1,4 @@
 namespace fireworks{
-    // The GUI values, that are both spawning values for the rocket as well as saved classes for the server
 
     export function create(_data: RocketData): void {
         console.log("category");
@@ -11,7 +10,7 @@ namespace fireworks{
         }
     }
 
-    // Create a option in the selector for every saved rocket preset
+
     function createOption(_items: Rocket[]): void {
         let selector: HTMLSelectElement | null = document.querySelector("select#presetSelector");
         if (selector == null)
@@ -24,10 +23,10 @@ namespace fireworks{
         for (let i = 0; i < _items.length; i++) {
             let option: HTMLOptionElement = document.createElement("option");
             option = document.createElement("option");
-            // option.value = option.textContent = "Preset " + i;
+      
             option.setAttribute("name", "default");
             option.setAttribute("value", "" + selectValue);
-            option.innerHTML = _items[i].preset; // TODO: is invalid for some reason
+            option.innerHTML = _items[i].preset; 
             selector.appendChild(option);
 
             selectValue++;
@@ -35,18 +34,16 @@ namespace fireworks{
     }
 
 
-    // This function is used on clicking the save button
     export function getCurrentValues(): Rocket {
         let presetName: string = String(new FormData(document.forms[1]).get("presetName"));
         let colorStart: string = String(new FormData(document.forms[1]).get("startColor"));
         let colorEnd: string = String(new FormData(document.forms[1]).get("endColor"));
-        let lifetime: number = Number(new FormData(document.forms[1]).get("lifetime")); // stanadard  0.05 + 0.025
+        let lifetime: number = Number(new FormData(document.forms[1]).get("lifetime")); 
         let size: number = Number(new FormData(document.forms[1]).get("particleSize"));
-
         let particleAmount: number = Number(new FormData(document.forms[1]).get("spawnAmount"));
         let hierarchyMax: number = Number(new FormData(document.forms[1]).get("explosionTimes"));
 
-        // Create a data object here for saving in the db
+      
         let iValues: Rocket = {
             preset: presetName,
             startColor: colorStart,
@@ -66,7 +63,7 @@ namespace fireworks{
         if (selectElem == null)
             return;
         let selectElemnt: HTMLSelectElement = <HTMLSelectElement>selectElem;
-        let presetIndex: number = selectElemnt.selectedIndex; // Number(new FormData(document.forms[0]).get("presetSelector"));
+        let presetIndex: number = selectElemnt.selectedIndex; 
 
         let _data: RocketData = result;
 

@@ -2,17 +2,18 @@ namespace fireworks {
 
     //variablen
     let server: string;
-    export let result: RocketData;
     let canvas: HTMLCanvasElement | null;
-    let rocketParticles: RocketWithPhysics[] = [];
-    let maxRockets: number = 2500;
+    let Particles: Rocketsss[] = [];
+    let maxRockets: number = 2000;
     let rocketsSpawn: number = 1;
     let updateTimer: number = 20;
     let xMouse: number;
     let yMouse: number;
     let gravity: number = 9.81 * 7;
-    export let ctx: CanvasRenderingContext2D;
 
+    export let ctx: CanvasRenderingContext2D;
+    export let result: RocketData;
+    
     window.addEventListener("load", handleLoad);
 
     //funktion klicken --> löst Raketen aus (spawnRockets)
@@ -23,7 +24,7 @@ namespace fireworks {
         yMouse = _event.clientY - rect.top;
         console.log("X: " + xMouse);
         console.log("Y: " + yMouse);
-        spawnSomeRockets();
+        spawnRockets();
     }
 
     async function handleLoad(): Promise<void> {
@@ -35,7 +36,7 @@ namespace fireworks {
         canvas.height = screen.height;
         console.log(maxRockets);
 
-        rocketParticles.length = maxRockets;
+        Particles.length = maxRockets;
         ctx = <CanvasRenderingContext2D>canvas.getContext("2d");
         ctx.beginPath();
         ctx.fillStyle = "#000000";
@@ -43,7 +44,7 @@ namespace fireworks {
         ctx.stroke();
         setInterval(update, updateTimer, canvas);
 
-        document?.querySelector("canvas")?.addEventListener("click", shootMouse);
+        document.querySelector("canvas")?.addEventListener("click", shootMouse);
 
         await getDataFromServer();
 
@@ -65,45 +66,9 @@ namespace fireworks {
         let allDatas = JSON.parse(responseContent);
         console.log(allDatas);
 
-        result = {
-            Rockets: [
-                {
-                    preset: "Let it Bang!",
-                    startColor: "#FFFF00",
-                    endColor: "#fe2c54",
-                    lifetime: 0.4,
-                    particleSize: 0.1,
-                    spawnAmount: 4,
-                    explosionTimes: 5
-                },
-                {
-                    preset: "Happy 2021",
-                    startColor: "#e8e217",
-                    endColor: "#00ffaa",
-                    lifetime: 0.2,
-                    particleSize: 1,
-                    spawnAmount: 3,
-                    explosionTimes: 2
-                },
-                {
-                    preset: "BIG BANG!",
-                    startColor: "#fc3bb3",
-                    endColor: "#aaaaaa",
-                    lifetime: 0.1,
-                    particleSize: 4,
-                    spawnAmount: 4,
-                    explosionTimes: 4
-                }
-            ]
-        };
 
         for (let i: number = 0; i < allDatas.length; i++) {
-            let resultInterfaceTemp: Rocket = <Rocket>allDatas[i]; //.find(item => item.rocketTitel === userValue);
-            // resultInterface.
-            console.log(allDatas);
-            console.log("TODO: Loading problem is here: cannot convert the data properly")
-            console.log(allDatas[i]);
-
+            let resultInterfaceTemp: Rocket = <Rocket>allDatas[i]; 
             let resultInterface: Rocket = {
                 preset: "" + resultInterfaceTemp.preset,
                 startColor: resultInterfaceTemp.startColor,
@@ -113,82 +78,73 @@ namespace fireworks {
                 spawnAmount: resultInterfaceTemp.spawnAmount,
                 explosionTimes: resultInterfaceTemp.explosionTimes
             }
-            // console.log(resultInterface);
+         
             result.Rockets.push(resultInterface);
         }
-        console.log("Datein wurden geladen");
-        console.log(result);
     }
 
     // It checks which rockets needs to be rendered onto the canvas and which rockets are gone and produce sub-particles.
     function update(): void {
-
         let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
         if (!canvas)
             return;
-        ctx = <CanvasRenderingContext2D>canvas.getContext("2d");
 
-        // console.log("update");
-        // ctx.putImageData(saveBackground, 0, 0)
+        ctx = <CanvasRenderingContext2D>canvas.getContext("2d");
         ctx.beginPath();
-        ctx.fillStyle = "#00000011"; // TODO: Check if opacity 
+        ctx.fillStyle = "#00000011"; 
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
         ctx.stroke();
 
         for (let i: number = 0; i < maxRockets; i++) {
-            if (rocketParticles[i] == null) {
+            if (Particles[i] == null) {
                 continue;
-            } else if (rocketParticles[i].shouldBeDestroyed) {
-                // Can the rocket spawn sub particles?
-
+            } else if (Particles[i].shouldBeDestroyed) {
                 console.log("pre-spawn");
 
-                if ((rocketParticles[i].hierarchy < rocketParticles[i].hierarchyMax) && rocketParticles[i].canBeOverwritten == false) { // TODO: let each rocket know how many hierarchies it has
-                    console.log(rocketParticles[i].particleAmount);
-                    for (let i: number = 0; i < rocketParticles[i].particleAmount; i++) {
-                        launchParticles(rocketParticles[i], i);
+                if ((Particles[i].hierarchy < Particles[i].hierarchyMax) && Particles[i].canBeOverwritten == false) { 
+                    console.log(Particles[i].particleAmount);
+                    for (let i: number = 0; i < Particles[i].particleAmount; i++) {
+                        launchParticles(Particles[i], i);
                     }
                 }
 
-                if (rocketParticles[i].canBeOverwritten != true) {
+                if (Particles[i].canBeOverwritten != true) {
                     ctx.save();
                     ctx.beginPath();
-                    ctx.arc(rocketParticles[i].position.x, rocketParticles[i].position.y, 100 * rocketParticles[i].radius, 0, 2 * Math.PI, false);
-                    if (rocketParticles[i].hierarchy == 0) {
-                        ctx.fillStyle = rocketParticles[i].colorStart; // TODO: Check if opacity 
+                    ctx.arc(Particles[i].position.x, Particles[i].position.y, 100 * Particles[i].radius, 0, 2 * Math.PI, false);
+                    if (Particles[i].hierarchy == 0) {
+                        ctx.fillStyle = Particles[i].colorStart;
                     } else {
-                        ctx.fillStyle = rocketParticles[i].colorEnd; // TODO: Check if opacity 
+                        ctx.fillStyle = Particles[i].colorEnd; 
                     }
 
                     ctx.fill();
-                    ctx.fillStyle = rocketParticles[i].colorCurrent;
+                    ctx.fillStyle = Particles[i].colorCurrent;
                     ctx.closePath();
                     ctx.stroke();
                     ctx.restore();
                 }
 
-                rocketParticles[i].canBeOverwritten = true;
+                Particles[i].canBeOverwritten = true;
 
-                rocketParticles.splice(i, 1);
-                rocketParticles.pop();
+                Particles.splice(i, 1);
+                Particles.pop();
                 i--;
             } else {
-                rocketParticles[i].calculateNewValue(updateTimer, canvas.width, canvas.height);
+                Particles[i].newValue(updateTimer, canvas.width, canvas.height);
 
                 ctx.save();
                 ctx.beginPath();
                 
-                if (rocketParticles[i].hierarchy == 0) {
-                    ctx.fillStyle = rocketParticles[i].colorStart; // TODO: Check if opacity 
-                    // console.log(1);
+                if (Particles[i].hierarchy == 0) {
+                    ctx.fillStyle = Particles[i].colorStart;
                 } else {
-                    ctx.fillStyle = rocketParticles[i].colorEnd; // TODO: Check if opacity 
-                    // console.log(2);
+                    ctx.fillStyle = Particles[i].colorEnd;   
                 }
 
-                ctx.arc(rocketParticles[i].position.x, rocketParticles[i].position.y, 50 * rocketParticles[i].size, 0, 2 * Math.PI, false);
+                ctx.arc(Particles[i].position.x, Particles[i].position.y, 50 * Particles[i].size, 0, 2 * Math.PI, false);
                 ctx.fill();
-                ctx.fillStyle = rocketParticles[i].colorCurrent;
+                ctx.fillStyle = Particles[i].colorCurrent;
                 ctx.strokeStyle = "rgba (1, 1, 1, 0)";
                 ctx.closePath();
                 ctx.stroke();
@@ -212,7 +168,7 @@ namespace fireworks {
     }
 
     //funnkiton spawnRockets(for-Schleife) löst launchRocket aus
-    export function spawnSomeRockets(): void {
+    export function spawnRockets(): void {
 
         for (let i: number = 0; i < rocketsSpawn; i++) {
             launchNewRocket();
@@ -228,7 +184,7 @@ namespace fireworks {
 
         let colorStart: string = String(new FormData(document.forms[1]).get("startColor"));
         let colorEnd: string = String(new FormData(document.forms[1]).get("endColor"));
-        let lifetime: number = Number(new FormData(document.forms[1]).get("lifetime")); // stanadard  0.05 + 0.025
+        let lifetime: number = Number(new FormData(document.forms[1]).get("lifetime")); 
         console.log(new FormData(document.forms[1]).get("lifetime"));
         console.log(lifetime);
         let radius: number = Number(new FormData(document.forms[1]).get("particleRadius"));
@@ -244,16 +200,16 @@ namespace fireworks {
             return;
         }
 
-        let newRocket: RocketWithPhysics;
+        let newRocket: Rocketsss;
 
         let pos: Vector = new Vector(canvas.width / 2, canvas.height);
         let vel: Vector = new Vector((xMouse - pos.x) / updateTimer / 5 * 4, Math.sqrt((canvas.height - yMouse) / (gravity / 2) * updateTimer) * -3.15);
 
-        newRocket = new RocketWithPhysics(pos, vel, gravity, lifetime, size, colorStart, colorEnd, particleAmount, 0, hierarchyMax, radius);
-        rocketParticles[spawnIndex] = newRocket;
+        newRocket = new Rocketsss(pos, vel, gravity, lifetime, size, colorStart, colorEnd, particleAmount, 0, hierarchyMax, radius);
+        Particles[spawnIndex] = newRocket;
     }
 
-    function launchParticles(rocketOriginal: RocketWithPhysics, index: number): void {
+    function launchParticles(rocketOriginal: Rocketsss, index: number): void {
         let spawnIndex: number = GetFreeRocketSlot();
         if (spawnIndex != -1) {
             console.log("spawn");
@@ -263,28 +219,28 @@ namespace fireworks {
             let position: Vector = new Vector(0, 0);
             let velocity: Vector = new Vector(0, 0);
 
-            let colorStart: string = rocketOriginal.colorStart; // TODO: change to cascade from main rocket
+            let colorStart: string = rocketOriginal.colorStart;
             let colorEnd: string = rocketOriginal.colorEnd;
 
-            let size: number = rocketParticles[index].size * 0.5;
-            let radius: number = rocketParticles[index].radius * 0.8;
-            let particleAmount: number = rocketParticles[index].particleAmount;
+            let size: number = Particles[index].size * 0.5;
+            let radius: number = Particles[index].radius * 0.8;
+            let particleAmount: number = Particles[index].particleAmount;
 
-            let newRocket: RocketWithPhysics;
-            newRocket = new RocketWithPhysics(position, velocity, gravity, lifetime, size, colorStart, colorEnd, particleAmount, rocketOriginal.hierarchy + 1, rocketOriginal.hierarchyMax, radius);
-            newRocket.copyPosition(rocketParticles[index]);
+            let newRocket: Rocketsss;
+            newRocket = new Rocketsss(position, velocity, gravity, lifetime, size, colorStart, colorEnd, particleAmount, rocketOriginal.hierarchy + 1, rocketOriginal.hierarchyMax, radius);
+            newRocket.Position(Particles[index]);
             newRocket.velocity.x = (Math.random() - 0.5) * 40;
             newRocket.velocity.y = (Math.random() - 0.75) * 40 + rocketOriginal.velocity.y / updateTimer;
             newRocket.colorStart = colorStart;
             newRocket.colorEnd = colorEnd;
-            rocketParticles[spawnIndex] = newRocket;
+            Particles[spawnIndex] = newRocket;
         }
     }
 
     function GetFreeRocketSlot(): number {
 
         for (let i: number = 0; i < maxRockets; i++) {
-            if (rocketParticles[i] == null || rocketParticles[i].canBeOverwritten) {
+            if (Particles[i] == null || Particles[i].canBeOverwritten) {
                 return i;
             }
         }

@@ -6,7 +6,6 @@ import * as Mongo from "mongodb";
 
 //namespace
 export namespace fireworks {
-
     export interface Rocket {
         [type: string]: string | string[] | undefined;
     }
@@ -17,20 +16,19 @@ export namespace fireworks {
     let databaseUrl: string = "";
     let port: number | string | undefined = process.env.PORT;
     if (port == undefined)
-        port = 5001;
+        port = 5555;
+        
     startServer(port);
     connectToDatabase(databaseUrl);
 
 
     function startServer(_port: number | string): void {
         let server: Http.Server = Http.createServer();
-        console.log("Server startet auf Port " + _port);
         server.listen(_port);
         server.addListener("request", handleRequest);
     }
 
     //connect rockets to database
-
     async function connectToDatabase(_url: string): Promise<void> {
         let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
