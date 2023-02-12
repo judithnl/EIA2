@@ -1,15 +1,14 @@
 <!-- Name: Judith Lerch
 Matrikel: 269353
 Datum: 10.02.2023
-Hiermit versichere ich, dass ich diesen
-Code selbst geschrieben habe. -->
+ -->
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel='stylesheet' href='main.css'>
     
     <title>Judy's Rockets</title>
     
@@ -24,25 +23,18 @@ Code selbst geschrieben habe. -->
 <body>
     <canvas id="canvas"></canvas>
 
-    <div id="GUI">
+    <div>
 
         <form id="selector" method="GET">
             <fieldset>
                 <select id="presetSelector" name="presetSelector">
                 </select>
-
                 <button id="saveBtn" type="button">Save</button>
                 <button id="loadBtn" type="button">Load</button>
             </fieldset>
         </form>
 
-
         <form id="userInterface" method="GET">
-            <fieldset>
-                <input type="text" id="presetName" name="presetName" value="Name">
-                <label for="presetName">Name of Pattern</label>
-            </fieldset><br>
-
             <fieldset>
                 <input type="color" id="startColor" name="startColor" value="#00ff00">
                 <label for="startColor">Colour 1</label>
@@ -73,6 +65,10 @@ Code selbst geschrieben habe. -->
                 <label for="explosionTimes">Explosions</label>
             </fieldset>
 
+            <fieldset>
+                <input type="text" id="presetName" name="presetName" value="Name">
+                <label for="presetName">Name of Pattern</label>
+            </fieldset>
         </form>
     </div>
 

@@ -1,6 +1,5 @@
 namespace fireworks {
 
-    //variablen
     let server: string;
     let canvas: HTMLCanvasElement | null;
     let Particles: Rocketsss[] = [];
@@ -16,7 +15,6 @@ namespace fireworks {
     
     window.addEventListener("load", handleLoad);
 
-    //funktion klicken --> löst Raketen aus (spawnRockets)
     function shootMouse(_event: MouseEvent): void {
         _event.preventDefault();
         let rect: ClientRect = ctx.canvas.getBoundingClientRect();
@@ -59,7 +57,6 @@ namespace fireworks {
         saveBtn.addEventListener("click", sendDataToServer);
     }
 
-    // Called only at start
     async function getDataFromServer() {
         let response = await fetch(server + "?" + "command=getAllDatas");
         let responseContent = await response.text();
@@ -83,7 +80,6 @@ namespace fireworks {
         }
     }
 
-    // It checks which rockets needs to be rendered onto the canvas and which rockets are gone and produce sub-particles.
     function update(): void {
         let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
         if (!canvas)
@@ -153,21 +149,14 @@ namespace fireworks {
         }
     }
 
-    // Function which condensed the current values of the GUI into a rocket, and then saves that as a new one.
     async function sendDataToServer(_event: any) {
         let form: HTMLFormElement = <HTMLFormElement>document.querySelector("form#userInterface");
         let interfaceData: FormData = new FormData(form);
         let query: URLSearchParams = new URLSearchParams(<any>interfaceData);
         console.log(query);
-        let response: Response = await fetch(server
-             + "?" + query.toString());
-        let responseText: string = await response.text();
-        alert("CAUTION! Rocket loaded!");
-        console.log("Data has been send", responseText);
-        console.log(responseText);
+   
     }
 
-    //funnkiton spawnRockets(for-Schleife) löst launchRocket aus
     export function spawnRockets(): void {
 
         for (let i: number = 0; i < rocketsSpawn; i++) {
@@ -175,7 +164,6 @@ namespace fireworks {
         }
     }
 
-    // launch a new rocket
     function launchNewRocket(): void {
         let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
         if (!canvas)

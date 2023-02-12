@@ -3,16 +3,12 @@ import * as Http from "http";
 import * as Url from "url";
 import * as Mongo from "mongodb";
 
-
-//namespace
 export namespace fireworks {
     export interface Rocket {
         [type: string]: string | string[] | undefined;
     }
 
     let fireworkCollection: Mongo.Collection;
-
-   
     let databaseUrl: string = "";
     let port: number | string | undefined = process.env.PORT;
     if (port == undefined)
@@ -21,14 +17,12 @@ export namespace fireworks {
     startServer(port);
     connectToDatabase(databaseUrl);
 
-
     function startServer(_port: number | string): void {
         let server: Http.Server = Http.createServer();
         server.listen(_port);
         server.addListener("request", handleRequest);
     }
 
-    //connect rockets to database
     async function connectToDatabase(_url: string): Promise<void> {
         let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
@@ -37,7 +31,6 @@ export namespace fireworks {
         console.log("Database connection", fireworkCollection != undefined);
     }
 
-    //presets aufrufen
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
         console.log("handleRequest");
         _response.setHeader("content-type", "text/html; charset=utf-8");
@@ -70,7 +63,6 @@ export namespace fireworks {
     }
 
     async function getTitels(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
-
         let result: Mongo.Cursor = fireworkCollection.find({}, { projection: { _id: 0, fireworkName: 1 } });
         let arrayResult: string[] = await result.toArray();
         let listOfTitels: string = JSON.stringify(arrayResult);
