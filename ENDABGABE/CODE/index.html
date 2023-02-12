@@ -1,0 +1,81 @@
+<!-- Name: Judith Lerch
+Matrikel: 269353
+Datum: 10.02.2023
+Hiermit versichere ich, dass ich diesen
+Code selbst geschrieben habe. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    
+    <title>Judy's Rockets</title>
+    
+    <script src="main.js"></script>  
+    <script src="data.js"></script>    
+    <script src="Vector.js"></script>
+    <script src="rockets.js"></script>
+    <script src="stuff.js"></script>
+    <script src="Server.js"></script>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+
+    <div id="GUI">
+
+        <form id="selector" method="GET">
+            <fieldset>
+                <select id="presetSelector" name="presetSelector">
+                </select>
+
+                <button id="saveBtn" type="button">Save</button>
+                <button id="loadBtn" type="button">Load</button>
+            </fieldset>
+        </form>
+
+
+        <form id="userInterface" method="GET">
+            <fieldset>
+                <input type="text" id="presetName" name="presetName" value="Name">
+                <label for="presetName">Name of Pattern</label>
+            </fieldset><br>
+
+            <fieldset>
+                <input type="color" id="startColor" name="startColor" value="#00ff00">
+                <label for="startColor">Colour 1</label>
+            </fieldset>
+
+            <fieldset>
+                <input type="color" id="endColor" name="endColor" value="#e91e63">
+                <label for="startColor">Colour 2</label>
+            </fieldset>
+
+            <fieldset>
+                <input type="range" name="lifetime" id="lifetime" min="0.01" max="0.08" step="0.01" value="0.04">
+                <label for="lifetime">Lifetime</label>
+            </fieldset>
+            
+            <fieldset>
+                <input type="range" name="particleSize" id="particleSize" min="0.3" max="4" step="0.1" value="0.5">
+                <label for="particleSize">Particle size</label>
+            </fieldset>
+
+            <fieldset>
+                <input type="range" name="spawnAmount" id="spawnAmount" min="3" max="10" step="0.2" value="5">
+                <label for="spawnAmount">Particle amount</label>
+            </fieldset>
+
+            <fieldset>
+                <input type="range" name="explosionTimes" id="explosionTimes" min="3" max="10" step="1" value="5">
+                <label for="explosionTimes">Explosions</label>
+            </fieldset>
+
+        </form>
+    </div>
+
+</body>
+
+</html>
